@@ -2,8 +2,8 @@ package com.example.junit.pokemonReview.repository;
 
 import com.example.junit.pokemonReview.exceptions.PokemonNotFoundException;
 import com.example.junit.pokemonReview.models.Pokemon;
+import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -11,14 +11,15 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.*;
-
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+@AllArgsConstructor
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class PokemonRepositoryTest {
 
-    @Autowired
-    private PokemonRepository pokemonRepository;
+
+    private final PokemonRepository pokemonRepository;
 
     @Test
     public void PokemonRepository_SaveAll_ReturnSavedPokemon() {
@@ -66,6 +67,14 @@ public class PokemonRepositoryTest {
                 .orElseThrow(() -> new PokemonNotFoundException("Not found"));
 
         assertThat(pokemonList).isNotNull();
+    }
+
+    @Test
+    public void PokemonRepository_FindByType_ThrowsException() {
+
+        assertThatExceptionOfType(PokemonNotFoundException.class)
+                .isThrownBy(() -> pokemonRepository.findByType("electric")
+                        .orElseThrow(() -> new PokemonNotFoundException("Not found"))).withMessage("Not found");
     }
 
     @Test
