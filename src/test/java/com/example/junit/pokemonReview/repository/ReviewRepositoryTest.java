@@ -1,22 +1,23 @@
 package com.example.junit.pokemonReview.repository;
 
 import com.example.junit.pokemonReview.models.Review;
-import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 import java.util.List;
 import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-@AllArgsConstructor
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class ReviewRepositoryTest {
 
-
-    private final ReviewRepository reviewRepository;
+    @Autowired
+    ReviewRepository reviewRepository;
 
     @Test
     public void ReviewRepository_SaveAll_ReturnsSavedReview() {
