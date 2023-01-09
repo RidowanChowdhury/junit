@@ -5,21 +5,21 @@ import com.example.junit.pokemonReview.service.PokemonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.hamcrest.Matchers.is;
 /*
-Integration testing with WebTestClient
+Integration testing with WebTestClient, with application dependent service postgresql with testContainers.
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc(addFilters = false) // to ignore security
-class PokemonControllerIntegrationTest {
+@ActiveProfiles("test")
+class PokemonControllerE2ETest {
 
     @Autowired
     WebTestClient webTestClient;
