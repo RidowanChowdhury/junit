@@ -31,7 +31,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @WebMvcTest(controllers = PokemonController.class)
 @AutoConfigureMockMvc(addFilters = false)
-//@ExtendWith(MockitoExtension.class)
 class PokemonControllerTest {
 
     @Autowired
