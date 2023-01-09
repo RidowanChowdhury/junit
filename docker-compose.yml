@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - app_data:/var/lib/postgresql/data
+  junit-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - spring_datasource_url=jdbc:postgresql://db/postgres
+      - spring_datasource_username=root
+      - spring_datasource_password=root
+      - spring_jpa_hibernate_ddl_auto=create
+    depends_on:
+      - db
+
+volumes:
+  app_data:
