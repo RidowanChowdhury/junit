@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 @ContextConfiguration(classes = {BirthdayInfoController.class, BasicBirthdayService.class})
 @WebMvcTest
 class BirthdayInfoControllerTest {

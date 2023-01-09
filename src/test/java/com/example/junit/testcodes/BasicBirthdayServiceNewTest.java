@@ -21,12 +21,12 @@ class BasicBirthdayServiceNewTest {
 
     @BeforeEach
     void setup() {
-        System.out.println("Before each was called!!");
+
     }
 
     @AfterEach
     void close() {
-        System.out.println("After each was called!!");
+
     }
 
     @Test
@@ -53,6 +53,5 @@ class BasicBirthdayServiceNewTest {
         String sign = birthdayService.getStarSign(LocalDate.of(1979, 7, 14));
         assertThat(sign).isEqualTo(star);
     }
-
 
 }
