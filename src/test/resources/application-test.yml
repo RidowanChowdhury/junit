@@ -10,5 +10,5 @@ spring:
         dialect : org.hibernate.dialect.PostgresPlusDialect
   datasource:
     url: jdbc:tc:postgresql://localhost/postgres
-    username: root
-    password: root
+    username: ridwan
+    password: ridwan

@@ -9,6 +9,6 @@ spring:
         format_sql: true
         dialect : org.hibernate.dialect.PostgresPlusDialect
   datasource:
-    url: jdbc:postgresql://localhost/postgres
-    username: root
-    password: root
+    url: jdbc:postgresql://127.0.0.1/postgres
+    username: ridwan
+    password: ridwan

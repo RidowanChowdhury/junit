@@ -23,6 +23,10 @@ public class PokemonController {
         this.pokemonService = pokemonService;
     }
 
+    @GetMapping("hello")
+    public String helloString() {
+        return "Hello world";
+    }
     @GetMapping("pokemon")
     public ResponseEntity<PokemonResponse> getPokemons(
             @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
